@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         firstNum = findViewById(R.id.etFirst);
         secondNum = findViewById(R.id.etSecond);
         add = findViewById(R.id.btnAdd);
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         divide = findViewById(R.id.btnDivide);
         clear = findViewById(R.id.btnClear);
         display = findViewById(R.id.tvDisplay);
+
+        Toast.makeText(MainActivity.this, "Welcome to Calculator APP.", Toast.LENGTH_SHORT).show();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
