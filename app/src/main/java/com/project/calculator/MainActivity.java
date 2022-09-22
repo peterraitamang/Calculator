@@ -2,8 +2,10 @@ package com.project.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Float b = Float.valueOf(secondNum.getText().toString());
 
                 Float add_result= (a+b);
+                closeKeyboard();
                 display.setText(String.valueOf(add_result));
                 Toast.makeText(MainActivity.this, "Added Successfully.", Toast.LENGTH_SHORT).show();
             }
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 Float b = Float.valueOf(secondNum.getText().toString());
 
                 Float sub_result= (a-b);
+                closeKeyboard();
                 display.setText(String.valueOf(sub_result));
                 Toast.makeText(MainActivity.this, "Subtracted Successfully.", Toast.LENGTH_SHORT).show();
 
@@ -83,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 Float b = Float.valueOf(secondNum.getText().toString());
 
                 Float mul_result= (a*b);
+                closeKeyboard();
                 display.setText(String.valueOf(mul_result));
                 Toast.makeText(MainActivity.this, "Multiplied Successfully.", Toast.LENGTH_SHORT).show();
             }
@@ -103,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 Float b = Float.valueOf(secondNum.getText().toString());
 
                 Float div_result= (a/b);
+                closeKeyboard();
                 display.setText(String.valueOf(div_result));
                 Toast.makeText(MainActivity.this, "Divided Successfully.", Toast.LENGTH_SHORT).show();
             }
@@ -117,6 +123,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Cleared Successfully.", Toast.LENGTH_SHORT).show();
             }
         });
-
+    }
+    private void closeKeyboard(){
+        View view = this.getCurrentFocus();
+        if (view !=null){
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            manager.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
     }
 }
